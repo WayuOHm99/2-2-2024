@@ -70,8 +70,8 @@
 	</div>
 
 	<?PHP
-	include("connectDB.php");
-	$sql = "SELECT o_id, date_order, SUM(amount), SUM(total), order_status FROM orders GROUP BY o_id, date_order" or die("Error:" . mysqli_error());
+	include ("connectDB.php");
+	$sql = "select o_id, date_order, sum(amount), sum(total), order_status from  orders Group by o_id, date_order " or die("Error:" . mysqli_error());
 
 	$result = mysqli_query($conn, $sql);
 
