@@ -71,8 +71,8 @@
 
 	<?PHP
 	include("connectDB.php");
-	$sql = "select o_id, username, date_order, sum(amount), sum(total), order_status 
-			from orders Group by o_id, date_order" or die("Error:" . mysqli_error());
+	$sql = "SELECT o_id, date_order, SUM(amount), SUM(total), order_status FROM orders GROUP BY o_id, date_order" or die("Error:" . mysqli_error());
+
 	$result = mysqli_query($conn, $sql);
 
 	?>
@@ -99,11 +99,6 @@
 				</td>
 				<td>
 					<font id="a3">
-						<?PHP echo $rs['username']; ?>
-					</font>
-				</td>
-				<td>
-					<font id="a3">
 						<?PHP echo $rs['date_order']; ?>
 					</font>
 				</td>
@@ -122,7 +117,7 @@
 					<input type="hidden" name="o_id" value=<?PHP echo $rs['o_id']; ?> />
 					<td>
 						<font id="a3"> <select name="order_status" id="order_status">
-								<option value="paid">paid</option>
+								<option value="Paid">Paid</option>
 								<option value="Processing">Processing</option>
 								<option value="Sent">Sent</option>
 							</select> </font>
