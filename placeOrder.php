@@ -152,7 +152,7 @@
 	// insert to orders 
 	if ($i > 0) {
 		for ($j = 0; $j < $i; $j++) {
-			$sql_insert = "Insert into orders (o_id, c_id, c_name, username, date_order, price, amount, total, card_number, order_status) Values($o_id+1, '$array_c_name{$j}', '$username', '$date_order', $array_price[$j], $array_amount[$j], $array_total[$j], $card_number,'Placed')";
+			$sql_insert = "INSERT INTO orders (o_id, c_id, c_name, username, data_order, price, amount, total, card_number, order_status) VALUES($o_id+1, $array_c_id[$j], '$array_c_name[$j]','$username', '$date_order', $array_price[$j], $array_amount[$j], $array_total[$j], '$card_number', 'Placed')";
 
 			$rs2 = mysqli_query($conn, $sql_insert);
 			if (!$rs2)
@@ -167,7 +167,7 @@
 		}
 		echo "<script>alert('Update Successful'); </script>";
 		// delete on cart where username = $username after placed orders
-		$sql_delete = "Delete from cart WHERE username = '$username'";
+		$sql_delete = "DELETE fROM cart WHERE username = '$username'";
 		if ($j > 0) {
 			$rs3 = mysqli_query($conn, $sql_delete);
 			if (!$rs3)
